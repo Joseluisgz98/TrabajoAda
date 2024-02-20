@@ -3,13 +3,14 @@ package com.example.trabajoada.Servicios
 import com.example.trabajoada.Clases.Comprador
 import com.example.trabajoada.Clases.Repartidor
 import com.example.trabajoada.Repository.CompradorRepository
+import com.example.trabajoada.Repository.PaqueteRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class CompradorService {
-    @Autowired
 
+    @Autowired
     private val compradorRepository:CompradorRepository? = null
 
     fun addComprador(nombre: String?,email: String?,dni:String?): String{
@@ -32,5 +33,4 @@ class CompradorService {
             compradorRepository!!.findByDni(dni)
         }
     }
-    
 }

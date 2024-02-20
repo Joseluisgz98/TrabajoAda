@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service
 @Service
 class RepartidorService {
     @Autowired
-
     private val repartidorRepository: RepartidorRepository? = null
     fun addRepartidor(nombre: String?,email: String?,dni:String?): String {
         val comprobar = recuperarPorDni(dni)
