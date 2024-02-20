@@ -1,4 +1,4 @@
-package com.example.trabajoada
+package com.example.trabajoada.Clases
 
 import jakarta.persistence.*
 
@@ -12,6 +12,6 @@ class Paquete {
     var comprador : Comprador? = null
     var descripcion:String? = null
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCamion")
-    var camion:Camion? = null
+    @JoinColumn(name = "idCamionero")
+    var repartidor: Repartidor? = null
 }

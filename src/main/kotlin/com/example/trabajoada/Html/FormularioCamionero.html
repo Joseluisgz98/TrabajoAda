@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Agregar nuevo camionero</h2>
+<form action="http://localhost:8080/repartidor/add" method="post" >
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br><br>
+    <label for="dni">Dni</label>
+    <input type="text" id="dni" name="dni"><br>
+    <input type="submit" value="Enviar">
+</form>
+<br>
+<form action="http://localhost:8080/repartidor/all" method="get">
+    <button type="submit">devolver</button>
+</form>
+<br>
+<form action="http://localhost:8080/repartidor/delete" method=get>
+    <label for="dni1">Borrar por dni:</label><br>
+    <input type="text" id="dni1" name="dni"><br>
+    <input type="submit" value="Enviar">
+</form>
+<br>
+
+<form action="http://localhost:8080/repartidor/update" method="get">
+    <label for="dni2">introduce el dni</label>
+    <input type="text" id="dni2" name="dni"><br>
+    <label for="nombreNuevo">Nombre:</label><br>
+    <input type="text" id="nombreNuevo" name="nombreNuevo"><br>
+    <label for="nuevoEmail">Email:</label><br>
+    <input type="text" id="nuevoEmail" name="nuevoEmail"><br><br>
+    <input type="submit" value="Enviar">
+
+</form>
+</body>
+</html>
