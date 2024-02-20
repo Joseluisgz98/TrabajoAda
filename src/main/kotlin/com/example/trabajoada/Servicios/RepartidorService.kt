@@ -13,12 +13,17 @@ class RepartidorService {
 
     private val repartidorRepository: RepartidorRepository? = null
     fun addRepartidor(nombre: String?,email: String?,dni:String?): String {
-        val n = Repartidor()
-        n.nombre = nombre
-        n.email = email
-        n.dni = dni
-        repartidorRepository!!.save(n)
-        return "Guardado"
+        val comprobar = recuperarPorDni(dni)
+        if (comprobar.any()){
+            return "Ya existe un repartidor con este DNI"
+        }else{
+            val repartidor = Repartidor()
+            repartidor.nombre = nombre
+            repartidor.email = email
+            repartidor.dni = dni
+            repartidorRepository!!.save(repartidor)
+            return "Guardado"
+        }
     }
     fun allRepartidor(): Iterable<Repartidor?> {
         return repartidorRepository!!.findAll()
