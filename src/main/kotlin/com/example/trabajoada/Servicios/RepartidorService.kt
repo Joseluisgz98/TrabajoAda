@@ -4,8 +4,6 @@ import com.example.trabajoada.Clases.Repartidor
 import com.example.trabajoada.Repository.RepartidorRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestParam
-
 
 @Service
 class RepartidorService {
@@ -36,8 +34,8 @@ class RepartidorService {
         }
     }
     fun deleteRepartidor(dni: String?): String {
-        var camionero = recuperarPorDni(dni!!)
-        var primero=camionero.first()
+        var repartidor = recuperarPorDni(dni!!)
+        var primero=repartidor.first()
         return if (dni.isNullOrEmpty()) {
             return "No se encontro"
         } else {

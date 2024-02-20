@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository
 interface PaqueteRepository: CrudRepository<Paquete?, Int?> {
     fun findByIdPaquete(idPaquete:Int?):List<Paquete>
     fun findByDescripcion (descripcion:String?):List<Paquete>
-
 }
