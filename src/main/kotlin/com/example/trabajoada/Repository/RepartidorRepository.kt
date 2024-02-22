@@ -9,6 +9,6 @@ interface RepartidorRepository: CrudRepository<Repartidor?, Int?> {
     fun findByNombre(nombre: String): List<Repartidor?>
     fun findByEmail(email:String): List<Repartidor?>
     fun findByDni(dni:String): List<Repartidor?>
-    fun findByIdRepartidor(idRepartidor:Int?):List<Repartidor?>
+    fun findByIdRepartidor(idRepartidor:Int?):Repartidor?
 
 }

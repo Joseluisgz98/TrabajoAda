@@ -1,25 +1,40 @@
 package com.example.trabajoada.Controller
 
+import com.example.trabajoada.Clases.Comprador
 import com.example.trabajoada.Servicios.CompradorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.*
 
 @Controller
 @RequestMapping(path=["/Comprador"])
 class CompradorController {
+
     @Autowired
     private val compradorService:CompradorService? = null
 
     @PostMapping(path=["/add"])
     @ResponseBody
-    fun addCamionero(
+    fun addComprador(
             @RequestParam nombre: String?, @RequestParam email: String?, @RequestParam dni:String?
     ): String {
         return compradorService!!.addComprador(nombre,email,dni)
     }
+    @GetMapping("/all")
+    @ResponseBody
+    fun allCompradores(): Iterable<Comprador?> {
+        return compradorService!!.allCompradores()
+    }
+    @GetMapping("/delete")
+    @ResponseBody
+    fun deleteComprador(@RequestParam dni: String?): String {
+        return compradorService!!.deleteComprador(dni)
+    }
+    @GetMapping("/update")
+    @ResponseBody
+    fun updateComprador(@RequestParam dni: String?, @RequestParam nombreNuevo:String, @RequestParam nuevoEmail:String): String {
+        return compradorService!!.updateComprador(dni,nombreNuevo,nuevoEmail)
+    }
+
 
 }

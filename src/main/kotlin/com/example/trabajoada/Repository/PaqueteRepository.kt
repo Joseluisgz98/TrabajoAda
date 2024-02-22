@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface PaqueteRepository: CrudRepository<Paquete?, Int?> {
-    fun findByIdPaquete(idPaquete:Int?):List<Paquete>
-    fun findByDescripcion (descripcion:String?):List<Paquete>
+    fun findByIdPaquete(idPaquete:Int?):Paquete?
+    fun findByDescripcion (descripcion:String?):List<Paquete?>
 }

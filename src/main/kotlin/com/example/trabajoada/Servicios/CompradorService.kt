@@ -1,9 +1,7 @@
 package com.example.trabajoada.Servicios
 
 import com.example.trabajoada.Clases.Comprador
-import com.example.trabajoada.Clases.Repartidor
 import com.example.trabajoada.Repository.CompradorRepository
-import com.example.trabajoada.Repository.PaqueteRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -31,6 +29,31 @@ class CompradorService {
             compradorRepository!!.findAll()
         } else {
             compradorRepository!!.findByDni(dni)
+        }
+    }
+    fun allCompradores(): Iterable<Comprador?> {
+        return compradorRepository!!.findAll()
+    }
+    fun deleteComprador(dni: String?): String {
+        var repartidor = recuperarPorDni(dni!!)
+        var primero=repartidor.first()
+        return if (dni.isNullOrEmpty()) {
+            return "No se encontro"
+        } else {
+            compradorRepository!!.delete(primero!!)
+            return "borrado"
+        }
+    }
+    fun updateComprador(dni: String?,nombreNuevo:String,nuevoEmail:String): String {
+        var usuario = recuperarPorDni(dni)
+        var primero=usuario.first()
+        return if (dni.isNullOrEmpty()) {
+            return "No se encontro"
+        } else {
+            primero?.nombre = nombreNuevo
+            primero?.email = nuevoEmail
+            compradorRepository!!.save(primero!!)
+            return "cambiado"
         }
     }
 }
