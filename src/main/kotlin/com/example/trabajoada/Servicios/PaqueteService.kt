@@ -17,19 +17,23 @@ class PaqueteService {
     @Autowired
     private val repartidorRepository: RepartidorRepository?= null
 
-    fun addPaquete(idComprador:Int?,idRepartidor:Int?,descripcion:String?):String{
+    fun addPaquete(idComprador:String?,idRepartidor:String?,descripcion:String?):String{
         val paquete = Paquete()
-        paquete.comprador = compradorRepository!!.findByIdComprador(idComprador)
-        paquete.repartidor = repartidorRepository!!.findByIdRepartidor(idRepartidor)
+        if (idComprador.isNullOrEmpty() or idRepartidor.isNullOrEmpty()){
+            return "El comprador o el repartidor no existe"
+        }else{
+        paquete.comprador = compradorRepository!!.findByIdComprador(idComprador!!.toInt())
+        paquete.repartidor = repartidorRepository!!.findByIdRepartidor(idRepartidor!!.toInt())
         paquete.descripcion = descripcion
         paqueteRepository!!.save(paquete)
         return "Guardado"
+        }
     }
     fun allPaquete(): Iterable<Paquete?> {
         return paqueteRepository!!.findAll()
     }
-    fun recuperrarPorId(idPaquete: Int?):Paquete?{
-        return paqueteRepository!!.findByIdPaquete(idPaquete)
+    fun recuperrarPorId(idPaquete: String?):Paquete?{
+        return paqueteRepository!!.findByIdPaquete(idPaquete!!.toInt())
     }
     fun recuperrarPorDescripcion(descripcion: String?):Iterable<Paquete?>{
         return if (descripcion.isNullOrEmpty()) {

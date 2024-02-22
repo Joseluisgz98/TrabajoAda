@@ -16,16 +16,18 @@ class RepartidorController {
 
     @PostMapping(path=["/add"]) // Map ONLY POST Requests
     @ResponseBody
-    fun addCamionero(
+    fun addRepartidor(
             @RequestParam nombre: String?, @RequestParam email: String?, @RequestParam dni:String?
     ): String {
         return repartidorService!!.addRepartidor(nombre,email,dni)
     }
     @GetMapping("/all")
     @ResponseBody
-    fun allCamionero(): Iterable<Repartidor?> {
+    fun allRepartidor(): Iterable<Repartidor?> {
         return repartidorService!!.allRepartidor()
     }
+    @GetMapping("/dni")
+    @ResponseBody
     fun recuperrarPorDni(@RequestParam dni: String?): Iterable<Repartidor?> {
         return if (dni.isNullOrEmpty()) {
             repartidorService!!.allRepartidor()
@@ -36,12 +38,12 @@ class RepartidorController {
 
     @GetMapping("/delete")
     @ResponseBody
-    fun deleteCamionero(@RequestParam dni: String?): String {
+    fun deleteRepartidor(@RequestParam dni: String?): String {
             return repartidorService!!.deleteRepartidor(dni)
     }
     @GetMapping("/update")
     @ResponseBody
-    fun updateCamionero(@RequestParam dni: String?, @RequestParam nombreNuevo:String, @RequestParam nuevoEmail:String): String {
+    fun updateRepartidor(@RequestParam dni: String?, @RequestParam nombreNuevo:String, @RequestParam nuevoEmail:String): String {
             return repartidorService!!.updateRepartidor(dni,nombreNuevo,nuevoEmail)
     }
 }
