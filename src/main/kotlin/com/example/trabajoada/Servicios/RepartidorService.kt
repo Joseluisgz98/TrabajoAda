@@ -54,4 +54,18 @@ class RepartidorService {
             return "cambiado"
         }
     }
+    fun recuperrarPorNombre(nombre: String?): Iterable<Repartidor?>{
+        return if (nombre.isNullOrEmpty()) {
+            repartidorRepository!!.findAll()
+        } else {
+            repartidorRepository!!.findByNombre(nombre)
+        }
+    }
+    fun recuperrarPorEmail(email: String?): Iterable<Repartidor?>{
+        return if (email.isNullOrEmpty()) {
+            repartidorRepository!!.findAll()
+        } else {
+            repartidorRepository!!.findByEmail(email)
+        }
+    }
 }

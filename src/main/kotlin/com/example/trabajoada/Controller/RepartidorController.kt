@@ -46,4 +46,14 @@ class RepartidorController {
     fun updateRepartidor(@RequestParam dni: String?, @RequestParam nombreNuevo:String, @RequestParam nuevoEmail:String): String {
             return repartidorService!!.updateRepartidor(dni,nombreNuevo,nuevoEmail)
     }
+    @GetMapping("/PorNombre")
+    @ResponseBody
+    fun recuperrarPorNombre(@RequestParam nombre: String?): Iterable<Repartidor?>{
+        return repartidorService!!.recuperrarPorNombre(nombre)
+    }
+    @GetMapping("/PorEmail")
+    @ResponseBody
+    fun recuperrarPorEmail(@RequestParam email: String?): Iterable<Repartidor?>{
+        return repartidorService!!.recuperrarPorEmail(email)
+    }
 }

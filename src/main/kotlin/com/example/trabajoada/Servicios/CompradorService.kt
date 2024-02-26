@@ -56,4 +56,19 @@ class CompradorService {
             return "cambiado"
         }
     }
+    fun recuperarPorEmail(email: String?): Iterable<Comprador?>{
+        return if (email.isNullOrEmpty()) {
+            compradorRepository!!.findAll()
+        } else {
+            compradorRepository!!.findByEmail(email)
+        }
+    }
+    fun recuperarPorNombre(nombre: String?): Iterable<Comprador?>{
+        return if (nombre.isNullOrEmpty()) {
+            compradorRepository!!.findAll()
+        } else {
+            compradorRepository!!.findByNombre(nombre)
+        }
+    }
+
 }
