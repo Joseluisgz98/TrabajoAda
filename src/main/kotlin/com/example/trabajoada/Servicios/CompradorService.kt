@@ -11,6 +11,12 @@ class CompradorService {
     @Autowired
     private val compradorRepository:CompradorRepository? = null
 
+    /**
+     * Funcion para añadir un comprador
+     * @param nombre nombre del comprador
+     * @param email email del comprador
+     * @param dni dni del comprador
+     */
     fun addComprador(nombre: String?,email: String?,dni:String?): String{
         val comprobar = recuperarPorDni(dni)
         if (comprobar.any()){
@@ -24,6 +30,11 @@ class CompradorService {
             return "Guardado"
         }
     }
+
+    /**
+     * Funcion para recuperrar por dni
+     * @param dni dni del comprador
+     */
     fun recuperarPorDni(dni: String?): Iterable<Comprador?> {
         return if (dni.isNullOrEmpty()) {
             compradorRepository!!.findAll()
@@ -31,9 +42,18 @@ class CompradorService {
             compradorRepository!!.findByDni(dni)
         }
     }
+
+    /**
+     * Funcion para recuperrar todos los compradores
+     */
     fun allCompradores(): Iterable<Comprador?> {
         return compradorRepository!!.findAll()
     }
+
+    /**
+     * Funcion para borrar un comprador
+     * @param dni dni del comprador
+     */
     fun deleteComprador(dni: String?): String {
         var repartidor = recuperarPorDni(dni!!)
         var primero=repartidor.first()
@@ -44,6 +64,13 @@ class CompradorService {
             return "borrado"
         }
     }
+
+    /**
+     * Funcion pora actualizar un comprador
+     * @param dni dni del comprador
+     * @param nombreNuevo nombre nuevo del comprador
+     * @param nuevoEmail nombre nuevo del email
+     */
     fun updateComprador(dni: String?,nombreNuevo:String,nuevoEmail:String): String {
         var usuario = recuperarPorDni(dni)
         var primero=usuario.first()
@@ -56,6 +83,11 @@ class CompradorService {
             return "cambiado"
         }
     }
+
+    /**
+     * Funion para recuperar por email
+     * @param email email para filtrar
+     */
     fun recuperarPorEmail(email: String?): Iterable<Comprador?>{
         return if (email.isNullOrEmpty()) {
             compradorRepository!!.findAll()
@@ -63,6 +95,11 @@ class CompradorService {
             compradorRepository!!.findByEmail(email)
         }
     }
+
+    /**
+     * Funcion para recuperar por nombre
+     * @param nombre nombre por el que filtrar
+     */
     fun recuperarPorNombre(nombre: String?): Iterable<Comprador?>{
         return if (nombre.isNullOrEmpty()) {
             compradorRepository!!.findAll()

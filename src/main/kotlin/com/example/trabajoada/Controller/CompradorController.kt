@@ -44,7 +44,7 @@ class CompradorController {
     }
     @GetMapping("/porNombre")
     @ResponseBody
-    fun recuperarPorNombew(@RequestParam nombre: String?): Iterable<Comprador?>{
+    fun recuperarPorNombre(@RequestParam nombre: String?): Iterable<Comprador?>{
         return compradorService!!.recuperarPorNombre(nombre)
     }
 

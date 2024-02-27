@@ -1,6 +1,5 @@
 package com.example.trabajoada.Controller
 
-import com.example.trabajoada.Clases.Comprador
 import com.example.trabajoada.Clases.Paquete
 import com.example.trabajoada.Servicios.PaqueteService
 import org.springframework.beans.factory.annotation.Autowired
@@ -38,4 +37,15 @@ class PaqueteController {
     fun recuperrarPorDescripcion(@RequestParam descripcion: String?):Iterable<Paquete?>{
         return paqueteService!!.recuperrarPorDescripcion(descripcion)
     }
+    @GetMapping("/borrar")
+    @ResponseBody
+    fun deletePaquete(@RequestParam idPaquete: String):String{
+        return paqueteService!!.deletePaquete(idPaquete)
+    }@GetMapping("/actualizar")
+    @ResponseBody
+    fun updatePaquete(@RequestParam idPaquete: String?,@RequestParam nuevaDescripcion:String):String{
+        return paqueteService!!.updatePaquete(idPaquete,nuevaDescripcion)
+    }
+
+
 }
