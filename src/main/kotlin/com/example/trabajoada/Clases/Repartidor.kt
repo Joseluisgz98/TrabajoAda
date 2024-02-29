@@ -9,6 +9,4 @@ class Repartidor {
     var dni:String? = null
     var nombre:String? = null
     var email: String? = null
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "repartidor")
-    val paquetes:MutableList<Paquete>? = null
 }
